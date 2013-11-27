@@ -16,4 +16,5 @@ RSpec.configure do |config|
   config.order = 'random'
 
   require File.expand_path('../../jabber_the_hutt.rb', __FILE__)
+
 end

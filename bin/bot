@@ -9,9 +9,7 @@ config = {
   :is_public => true
 }
 
-config.merge!(JabberTheHutt::Config[:jabber].symbolize_keys)
-
-bot = Jabber::Bot.new(config)
+bot = Jabber::Bot.new(JabberTheHutt.config.jabber.merge(config))
 
 # Give your bot a private command, 'rand'
 bot.add_command(
