@@ -1,7 +1,9 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'jabber-bot'
+#gem 'jabber-bot'
+gem 'xmpp4r', :git => 'https://github.com/xmpp4r/xmpp4r'
+
 gem 'rake'
 gem 'hashie'
 gem 'sqlite3'
