@@ -1,3 +1,2 @@
-config/*
-config/**
+config/base.yml
 tmp/*

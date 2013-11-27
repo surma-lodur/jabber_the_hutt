@@ -1,10 +1,16 @@
 
-require 'active_record'
 class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
   
   TimeOut = 5.minutes
 
   before_save :refresh
+
+  scope :removables, lambda {
+    where(
+      "last_seen < ?", 
+      DateTime.now - JabberTheHutt::SystemFetch::ArpEntry::TimeOut
+  )
+  }
 
   def refresh
     self.last_seen  = DateTime.now
@@ -12,7 +18,6 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
 
 
   class << self
-
 
     def handle_macs(macs)
       macs.each do |mac|
@@ -22,6 +27,7 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
           register(mac)
         end
       end
+      self.clean_up
     end
 
     def register(mac)
@@ -36,6 +42,10 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
       self.all.map(&:mac)
     end
 
+    def clean_up
+      self.removables.destroy_all
+    end
+
     protected
 
     def add_mac(mac, attributes = {})
@@ -43,7 +53,6 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
         :mac => mac
       })
     end # .add_mac
-
 
   end # class << self
 end # JabberTheHutt::SystemFetch::ArpEntry

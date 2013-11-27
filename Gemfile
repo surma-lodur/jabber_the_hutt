@@ -7,11 +7,15 @@ gem 'hashie'
 gem 'sqlite3'
 
 group :development, :test do
+  gem 'factory_girl', '~> 2.6.2'
   gem 'rspec'
+  gem 'guard',        '~> 1.8'
   gem 'guard-rspec'
-  gem 'guard',   '~> 1.8'
-  gem 'timecop', '~> 0.5.9'
+  gem 'guard-bundler'
+  gem 'timecop',      '~> 0.5.9'
   gem 'activerecord', '~> 3.0'
+
+  gem 'database_cleaner'
 end
 
 # gem "rails"

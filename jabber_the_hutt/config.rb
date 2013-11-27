@@ -17,7 +17,7 @@ module JabberTheHutt::Config
     def init_database
       ActiveRecord::Base.establish_connection(
         :adapter  => "sqlite3",
-        :database => File.join(JabberTheHutt.root,"database")
+        :database => File.join(JabberTheHutt.root,"tmp/database")
       )
 
       ActiveRecord::Base.connection.create_table :arp_entries, :force => true do |t|
@@ -28,7 +28,7 @@ module JabberTheHutt::Config
 
     def parse_yaml
       YAML.load_file(
-        File.expand_path('../../config/mapping.yml', __FILE__)
+        File.expand_path('../../config/base.yml', __FILE__)
       )
     end # .parse_yaml
 
