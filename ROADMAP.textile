@@ -1,0 +1,7 @@
+h1. ROADMAP
+
+h2. Listener and Offline-HW-Notifier into offtopic channel
+
+If a user sends a keyword into the offtopic jabber channel, 
+a hardware buzzer (optical or tone) was triggered into 
+the space if anyone is present.

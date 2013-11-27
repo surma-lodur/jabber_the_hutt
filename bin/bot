@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../jabber_the_hutt.rb', __FILE__)
+# Create a public Jabber::Bot
+config = {
+  :name      => 'Jabber The Hutt',
+  :status    => 'Hello, I am PublicBot.',
+  :presence  => :chat,
+  :is_public => true
+}
+
+config.merge!(JabberTheHutt::Config[:jabber].symbolize_keys)
+
+bot = Jabber::Bot.new(config)
+
+# Give your bot a private command, 'rand'
+bot.add_command(
+  :syntax      => 'workspace',
+  :description => 'Wer ist im Space?',
+  :regex       => /^.*workspace.*$/,
+  :is_public   => true
+) do
+  msg = JabberTheHutt::Visitors.get
+  msg
+end
+
+
+bot.connect
+
+
