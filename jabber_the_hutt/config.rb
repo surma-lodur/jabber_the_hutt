@@ -34,16 +34,15 @@ module JabberTheHutt::Config
 
 
     def symbolize_config(hash)
+      return hash unless hash.is_a?(Hash)
+
+      result = {}
+
       hash.each do |key, value|
-        if value.kind_of?(Hash)
-          hash[key.to_sym] = {}
-          value.each do |v_key, v_value|
-            hash[key.to_sym][v_key.to_sym] = v_value
-          end
-        end
+        result[key.to_sym] = symbolize_config(value)
       end
 
-      return hash
+      return result
     end # .symbolize_config
   end # class << self
 end
