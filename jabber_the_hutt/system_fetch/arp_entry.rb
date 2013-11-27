@@ -19,6 +19,8 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
 
   class << self
 
+    ## 
+    # macs: Array
     def handle_macs(macs)
       macs.each do |mac|
         if exists?(:mac => mac)

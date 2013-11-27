@@ -7,6 +7,7 @@ gem 'xmpp4r', :git => 'https://github.com/xmpp4r/xmpp4r'
 gem 'rake'
 gem 'hashie'
 gem 'sqlite3'
+gem 'activerecord', '~> 3.0'
 
 group :development, :test do
   gem 'factory_girl', '~> 2.6.2'
@@ -15,9 +16,9 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'timecop',      '~> 0.5.9'
-  gem 'activerecord', '~> 3.0'
 
   gem 'database_cleaner'
+  gem 'eventmachine'
 end
 
 # gem "rails"
