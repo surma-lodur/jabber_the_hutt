@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../jabber_the_hutt.rb', __FILE__)
+require 'eventmachine'
+
+
+module JabberTheHutt::Daemon 
+  class << self
+
+    def refetch_timer
+      EventMachine::Timer.new(10) do
+        puts "[#{DateTime.now.to_s}] Refetch"
+        JabberTheHutt::SystemFetch::refresh_arps
+        JabberTheHutt::Daemon.refetch_timer
+      end
+    end # .refetch_timer
+  end # class << self
+end
+
+EventMachine.run do
+  JabberTheHutt::Daemon.refetch_timer
+end
+

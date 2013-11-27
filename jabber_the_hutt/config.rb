@@ -20,9 +20,12 @@ module JabberTheHutt::Config
         :database => File.join(JabberTheHutt.root,"tmp/database")
       )
 
-      ActiveRecord::Base.connection.create_table :arp_entries, :force => true do |t|
-        t.string   :mac
-        t.datetime :last_seen
+      begin
+        ActiveRecord::Base.connection.create_table :arp_entries do |t|
+          t.string   :mac
+          t.datetime :last_seen
+        end
+      rescue Exception => e
       end
     end
 
