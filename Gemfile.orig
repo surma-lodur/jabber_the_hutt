@@ -1,0 +1,28 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+<<<<<<< HEAD
+gem 'em-xmpp'
+=======
+#gem 'jabber-bot'
+gem 'xmpp4r', :git => 'https://github.com/xmpp4r/xmpp4r'
+
+>>>>>>> 6304e0b5577b0f2ed98a19184a747b58564bd86b
+gem 'rake'
+gem 'hashie'
+gem 'sqlite3'
+gem 'activerecord', '~> 3.0'
+
+group :development, :test do
+  gem 'factory_girl', '~> 2.6.2'
+  gem 'rspec'
+  gem 'guard',        '~> 1.8'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'timecop',      '~> 0.5.9'
+
+  gem 'database_cleaner'
+  gem 'eventmachine'
+end
+
+# gem "rails"

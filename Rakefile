@@ -1,4 +1,6 @@
 
+$LOAD_PATH << "."
+
 require 'jabber_the_hutt'
 require 'irb'
 
