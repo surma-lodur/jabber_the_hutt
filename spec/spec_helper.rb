@@ -7,7 +7,7 @@
 #
 require 'factory_girl'
 require 'timecop'
-require 'spec/factories'
+require 'factories'
 require 'database_cleaner'
 
 RSpec.configure do |config|

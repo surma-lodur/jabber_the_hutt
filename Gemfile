@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
+gem 'eventmachine'
 gem 'em-xmpp'
 gem 'rake'
 gem 'hashie'
@@ -16,7 +17,6 @@ group :development, :test do
   gem 'timecop',      '~> 0.5.9'
 
   gem 'database_cleaner'
-  gem 'eventmachine'
 end
 
 # gem "rails"
