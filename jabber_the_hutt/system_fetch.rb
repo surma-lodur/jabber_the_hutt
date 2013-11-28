@@ -18,6 +18,7 @@ module JabberTheHutt::SystemFetch
   protected
 
   def self.call_arp_scan
-    `arp-scan --localnet --interface=eth0`
+    @interface ||= JabberTheHutt.config.sysfetch.interface
+    `arp-scan --localnet --interface=#{@interface}`
   end
 end

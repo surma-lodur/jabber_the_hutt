@@ -7,5 +7,6 @@ jabber:
   password:  '-__---__--'
   master:    'jabber2@jabber.de'
 
-
+sysfetch:
+  interface: 'eth0'
 
