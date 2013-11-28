@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'jabber-bot'
+gem 'em-xmpp'
 gem 'rake'
 gem 'hashie'
 gem 'sqlite3'

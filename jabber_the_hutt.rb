@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'bundler'
-require 'jabber/bot'
 require 'pp'
 require 'yaml'
 
