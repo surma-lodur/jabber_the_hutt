@@ -1,7 +1,7 @@
 jabber_the_hutt
 ===============
 
-https://travis-ci.org/surma-lodur/jabber_the_hutt.png
+[![Build Status](https://travis-ci.org/surma-lodur/jabber_the_hutt.png)
 
 Jabber person presence Bot
 
