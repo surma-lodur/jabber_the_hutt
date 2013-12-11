@@ -8,9 +8,12 @@ module JabberTheHutt::Config
     def parse
       self.init_database
 
-      return Hashie::Mash.new(
+      yaml = Hashie::Mash.new(
         symbolize_config( parse_yaml )
       )
+
+      JabberTheHutt::Config::Identity.setup(yaml['identities'])
+      return yaml
     end
 
     protected

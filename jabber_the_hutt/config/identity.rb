@@ -2,6 +2,8 @@ class JabberTheHutt::Config::Identity < Hashie::Dash
   property :macs
   property :contacts
   property :name
+  property :last_seen
+  property :seen_since
 
   cattr_accessor :macs
 
