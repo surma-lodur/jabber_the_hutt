@@ -9,11 +9,12 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
     where(
       "last_seen < ?", 
       DateTime.now - JabberTheHutt::SystemFetch::ArpEntry::TimeOut
-  )
+    )
   }
 
   def refresh
     self.last_seen  = DateTime.now
+    self.seen_since = self.last_seen if self.seen_since.nil?
   end
 
 
@@ -37,7 +38,14 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
     end
 
     def refresh(mac)
-      self.find_by_mac(mac).save!
+      prev_entry = self.find_by_mac(mac)
+      prev_entry.refresh
+
+      if prev_entry.last_seen + TimeOut < DateTime.now then
+        prev_entry.seen_since = prev_entry.last_seen
+      end
+
+      prev_entry.save!
     end # .refresh
 
     def macs
@@ -51,8 +59,8 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
     protected
 
     def add_mac(mac, attributes = {})
-      self.create({
-        :mac => mac
+      self.create!({
+        :mac => mac,
       })
     end # .add_mac
 

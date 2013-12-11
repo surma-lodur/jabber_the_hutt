@@ -8,12 +8,8 @@ module JabberTheHutt::SystemFetch
   end
 
   def self.get_arp
-    self.call_arp_scan.
-      split("\n")[3..-4].map do |line|
-      line.split("\t")[1]
-      end
+    self.call_arp_scan.scan(/((?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2})/).flatten
   end
-
 
   protected
 
