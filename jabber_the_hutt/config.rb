@@ -24,6 +24,7 @@ module JabberTheHutt::Config
         ActiveRecord::Base.connection.create_table :arp_entries do |t|
           t.string   :mac
           t.datetime :last_seen
+          t.datetime :seen_since
         end
       rescue Exception => e
       end
