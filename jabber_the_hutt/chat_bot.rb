@@ -60,7 +60,7 @@ module JabberTheHutt::ChatBot
   end # #make_jokes
 
   def where_is_here(ctx)
-    self.answer(ctx, JabberTheHutt::Visitors.get)
+    self.answer(ctx, JabberTheHutt::Visitors.get_names)
   end # #where_is_here
 
   #########################

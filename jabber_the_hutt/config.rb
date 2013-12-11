@@ -2,6 +2,7 @@ require 'hashie'
 require 'active_record'
 
 module JabberTheHutt::Config
+  autoload :Identity, File.expand_path('../config/identity', __FILE__)
 
   class << self
     def parse

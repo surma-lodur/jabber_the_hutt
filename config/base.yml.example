@@ -2,6 +2,19 @@ mac:
 
   xx:xx:xx:xx:xx: 'Günter Gras'
 
+identities:
+  'Günter Gras':
+    macs: 
+      - xx:xx:xx:xx:xx
+    contacts:
+      email: 'günter@gras.de'
+  'Günter Kastenfrosch':
+    macs:
+      - xx:xx:xx:xx:xx
+      - xx:xx:xx:xx:xx
+    contacts:
+      jabber: 'frosch@janosh.de'
+
 jabber:
   jabber_id: 'jabber@jabber.de'
   password:  '-__---__--'
