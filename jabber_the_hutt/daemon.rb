@@ -1,8 +1,3 @@
-#!/usr/bin/env ruby
-
-require File.expand_path('../../jabber_the_hutt.rb', __FILE__)
-require 'eventmachine'
-
 
 module JabberTheHutt::Daemon 
   class << self
@@ -16,8 +11,3 @@ module JabberTheHutt::Daemon
     end # .refetch_timer
   end # class << self
 end
-
-EventMachine.run do
-  JabberTheHutt::Daemon.refetch_timer
-end
-

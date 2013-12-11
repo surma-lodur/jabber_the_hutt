@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../jabber_the_hutt.rb', __FILE__)
+
+EM.run do
+  EM::Xmpp::Connection.start(
+    JabberTheHutt.config.jabber[:jabber_id],
+    JabberTheHutt.config.jabber[:password],
+    JabberTheHutt::ChatBot
+  )
+
+  JabberTheHutt::Daemon.refetch_timer
+end
