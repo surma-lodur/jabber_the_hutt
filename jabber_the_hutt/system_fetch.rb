@@ -15,6 +15,6 @@ module JabberTheHutt::SystemFetch
 
   def self.call_arp_scan
     @interface ||= JabberTheHutt.config.sysfetch.interface
-    `arp-scan --localnet --interface=#{@interface}`
+    `arp-scan --interval=10 --localnet --interface=#{@interface}`
   end
 end
