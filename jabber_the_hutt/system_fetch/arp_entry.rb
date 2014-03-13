@@ -30,6 +30,7 @@ class JabberTheHutt::SystemFetch::ArpEntry < ActiveRecord::Base
           register(mac)
         end
       end
+      
       self.clean_up
     end
 

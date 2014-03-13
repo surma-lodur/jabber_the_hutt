@@ -17,6 +17,7 @@ module JabberTheHutt::Visitors
       JabberTheHutt::SystemFetch::ArpEntry.all.each do |arp_entry|
         identity = JabberTheHutt::Config::Identity.macs[arp_entry.mac]
         next unless identity
+        
         identities[identity.object_id] = identity.merge({
           :last_seen  => arp_entry.last_seen,
           :seen_since => arp_entry.seen_since

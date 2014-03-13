@@ -5,23 +5,34 @@ class JabberTheHutt::Config::Identity < Hashie::Dash
   property :last_seen
   property :seen_since
   property :avatar
+  property :hostnames
 
   cattr_accessor :macs
+  cattr_accessor :hostnames
 
-  class << self
-    def setup(identity_hashes)
-      identities = identity_hashes.map do |name, hash|
-        self.new(hash.merge({'name' => name}))
+  def self.setup(identity_hashes)
+    identities = identity_hashes.map do |name, hash|
+      self.new(hash.merge({'name' => name}))
+    end
+
+    JabberTheHutt::Config::Identity.macs ||= {}
+    JabberTheHutt::Config::Identity.hostnames ||= {}
+
+    identities.each do |identity|
+      identity['macs'].each do |mac|
+        JabberTheHutt::Config::Identity.macs[mac] = identity
       end
 
-      JabberTheHutt::Config::Identity.macs ||= {}
-
-      identities.each do |identity|
-        identity['macs'].each do |mac|
-          JabberTheHutt::Config::Identity.macs[mac] = identity
-        end
+      (identity['hostnames'] || {}).each do |hostname, mac|
+        JabberTheHutt::Config::Identity.hostnames[hostname] = mac
       end
+    end
+  end
 
-    end # .setup
-  end # class << self
+  def to_browser_json()
+    copy = self.to_hash
+    copy.delete(:hostnames)
+    copy.delete(:macs)
+    return copy.to_json
+  end
 end

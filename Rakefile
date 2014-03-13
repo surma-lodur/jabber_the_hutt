@@ -35,7 +35,7 @@ task :all_in_one do
   EM.run do
     EM.add_periodic_timer(10) do
       File.open('tmp/visitors.json', 'w') do |file|
-        file << JabberTheHutt::Visitors.get_identities.to_json
+        file << JabberTheHutt::Visitors.get_identities.to_browser_json
       end
 
       system "scp tmp/visitors.json hacksaar-spaceboard:/data/visitors.json"
