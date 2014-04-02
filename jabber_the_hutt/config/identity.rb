@@ -29,7 +29,7 @@ class JabberTheHutt::Config::Identity < Hashie::Dash
     end
   end
 
-  def to_browser_json()
+  def to_json()
     copy = self.to_hash
     copy.delete(:hostnames)
     copy.delete(:macs)
