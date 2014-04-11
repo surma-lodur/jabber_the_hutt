@@ -54,8 +54,10 @@ end
 namespace :export do
   desc 'generates a visitors.json into tmp/, mat_daemon must watch eth device!'
   task :json do
-    File.open('tmp/visitors.json', 'w').write(
-      JabberTheHutt::Visitors.get_identities.to_json
-    )
+    File.open('tmp/visitors.json', 'w') do |f|
+      f.write(
+        JabberTheHutt::Visitors.get_identities.to_json
+      )
+    end
   end
 end

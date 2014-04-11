@@ -29,10 +29,10 @@ class JabberTheHutt::Config::Identity < Hashie::Dash
     end
   end
 
-  def to_json()
+  def filtered()
     copy = self.to_hash
-    copy.delete(:hostnames)
-    copy.delete(:macs)
-    return copy.to_json
+    copy.delete("hostnames")
+    copy.delete("macs")
+    return copy
   end
 end
